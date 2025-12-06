@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Created by Daniel Alarcón -->
+<!-- Contact: dalarconpoblete@gmail.com -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Manager</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        max-width: 400px;
+        width: 100%;
+    }
+    label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-size: 25px;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+    label.bold {
+        font-weight: bold;
+        display: inline-flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .current-time {
+        text-align: center;
+        margin-bottom: 20px;
+        position: relative;
+        left: -160px; 
+    }
+    .current-time .time {
+        font-size: 175px;
+        font-weight: bold;
+        line-height: 1.2;
+        display: block;
+    }
+
+    .label {
+        font-size: 14px;
+        color: #555;
+        text-align: center; 
+        width: 100%;
+        margin: 0 auto;
+    }
+    input[type="text"], button {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    button {
+        font-size: 16px;
+    }
+    input[type="number"] {
+        width: 48%;
+        padding: 5px;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    #resetTime {
+        font-size: 10px; 
+        padding: 3px; 
+    }
+    </style>
+<script type="text/javascript" nonce="74c226041a8c44719648947ca2f" src="//local.adguard.org?ts=1765044691482&amp;type=content-script&amp;dmn=mail-attachment.googleusercontent.com&amp;url=https%3A%2F%2Fmail-attachment.googleusercontent.com%2Fattachment%2Fu%2F0%2F%3Fui%3D2%26ik%3D27d569547d%26attid%3D0.1%26permmsgid%3Dmsg-a%3Ar8363793971202312536%26th%3D19af3abe5ad6a7d5%26view%3Datt%26disp%3Dsafe%26realattid%3D087752B5-1DA3-4AFE-B4F0-61D2B86658EF%26zw%26saddbat%3DANGjdJ9AycH3KV5agezP5GhQphs2FcmeMIO5L0oQ67hF5TNd1UuEidyKDbGn6U6Wu8kh6uELTIruHzM5KrlDp13SrdOQEXkgwAqGhNEUm82r-ZF2x0XVu2pmDKhGwJGu4TZ7k0JxWdFwb4gofBRwcrWRAgGLq5zVtsXNWGBzSDIGZr12Oi2MOHmdSOeeNFw3rsVf1UvmdPiff9V5sy0mUlQ9nS01WWhu4sOJSuMfypKGr0YGEs9pdUmZLIb0dimzi4x4IyhQMRpkejs83TA_hcBF2NuQKoNvDgRngYogndRJsz6gvGdwvH_YTdElHPHR_SD5uKPq39lai5LHMLuDtdHw4TrhDqRaFMnNF2sZt8vwbbkWG7nWkgowQcCULHuJhJ6Kbprmb1wwBm6cs89myg31i45QLG3eDVGR9Hu_LLA0RJYMZ8oaDSt8eJ0UAH61maUKkmJfX2dJKhstBMdghRO77wAh11UWWQ6uFBAZTRXa31-2pHeCv1i7ceP9QEeiupT3y092D11GSuqYHhEwzNRgr8bDqiMDRLDqVn0YjiObh41171b9GUzcKFEHLKTYD5m9cQjgIKThq0sUCGkvj3d9dKC-QzUowoTUSBtfIgQy3EE335yUcjm_7dyyzTqzm5wDwpptgjIrw98hj9Hi6TN8q816femD3ACLaPZ6AMgXvTIoFTQp7A67dw2CXnoZ4JVtPViBIGMpIScYjUFJi30pExH2o6V82HGn4sChygEVGwfPAk7onawcnxdDzPqG9XdOnVhB-oP1S5HnF7inVOztr6JuAZ-IgkbXnnx8kPy_BL3W2LtEE-p7ObTBqJwmauEo1jMLMvXVn5VP6cVCAxmHlI7k3fCIcXSkD5G09tYFm9ghiQxk-rLjoYm5Sg2V1UWK43QG_x5-PlV8wbhvyM3t7JJ1KMxafsiyFtOYLfwV7PGwntUWnkcOSk623a_uHEJoZFPvWNOB9-n3smcEyufW1ETOBqEm4tvP9T3na-v1XbdMMMsAH27WgtHpWZX8o5o1HdOQegqdIfIN3Sca9ckV5OQIRDaWDxpOFOz7ahjPpi6lJeJlwZXk7hNesDfF1DYKwTSE2dOZ44gLUX3GW8u0XXjWKOtpPcmObu3Bwg&amp;app=com.apple.Safari&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="74c226041a8c44719648947ca2f" src="//local.adguard.org?ts=1765044691482&amp;name=AdGuard%20Popup%20Blocker&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
+<body>
+    <div class="container">
+        <div class="current-time">
+            <div class="time" id="currentTime">--:--:--</div>
+        </div>
+        
+        <div class="label">Current Time</div>
+        
+        <label id="testDurationLabel">Test Duration: (Hours:Minutes)</label> 
+        <div style="display: flex; justify-content: space-between;">
+            <input type="number" id="durationHours" min="0" value="1" placeholder="Hours">
+            <input type="number" id="durationMinutes" min="0" max="59" value="0" placeholder="Minutes">
+        </div>
+
+        <button id="setDuration">Set Duration</button>
+        <button id="submitTime">Start</button>
+        
+        <label class="bold">Start Time: <span id="startTimeSpan"></span></label>
+
+        <label class="bold">Finish Time: <span id="finishTimeSpan"></span></label>
+
+        <label>40 minutes reminder: <span id="timeWarning1Span"></span></label>
+        <label>20 minutes reminder: <span id="timeWarning2Span"></span></label>
+        <label>10 minutes reminder: <span id="timeWarning3Span"></span></label>
+        <label>5 minutes reminder: <span id="timeWarning4Span"></span></label>
+
+        <button id="resetTime">Reset</button>
+    </div>
+
+    <script>
+        let durationHours = 1;
+        let durationMinutes = 0;
+
+        function updateCurrentTime() {
+            const currentTimeElement = document.getElementById("currentTime");
+            const now = new Date();
+            const options = { timeZone: "America/Santiago", hourCycle: 'h23', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const formattedTime = now.toLocaleTimeString("en-US", options);
+            currentTimeElement.textContent = formattedTime;
+        }
+
+        function updateTestDurationLabel() {
+            let durationText = "Test Duration: ";
+            if (durationHours > 0) {
+                durationText += `${durationHours} hour${durationHours > 1 ? 's' : ''}`;
+            }
+            if (durationMinutes > 0) {
+                if (durationHours > 0) {
+                    durationText += " ";
+                }
+                durationText += `${durationMinutes} minute${durationMinutes > 1 ? 's' : ''}`;
+            }
+            document.getElementById("testDurationLabel").textContent = durationText;
+        }
+
+        function calculateTimes() {
+            const now = new Date();
+            const options = { timeZone: "America/Santiago", hourCycle: 'h23', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+
+            const startTime = now;
+            const formattedStartTime = startTime.toLocaleTimeString("en-US", options);
+
+            document.getElementById("startTimeSpan").textContent = formattedStartTime;
+
+            const totalDuration = durationHours * 60 + durationMinutes;
+            const warningIntervals = [40, 20, 10, 5].map(warning => totalDuration - warning).filter(minutes => minutes > 0);
+            const warnings = warningIntervals.map(minutes => {
+                const warningTime = new Date(startTime.getTime() + minutes * 60000);
+                return warningTime.toLocaleTimeString("en-US", options);
+            });
+
+            const finishTime = new Date(startTime.getTime() + totalDuration * 60000).toLocaleTimeString("en-US", options);
+
+            document.getElementById("timeWarning1Span").textContent = warnings[0] || "--";
+            document.getElementById("timeWarning2Span").textContent = warnings[1] || "--";
+            document.getElementById("timeWarning3Span").textContent = warnings[2] || "--";
+            document.getElementById("timeWarning4Span").textContent = warnings[3] || "--";
+
+            document.getElementById("finishTimeSpan").textContent = finishTime;
+
+            document.getElementById("submitTime").disabled = true;
+        }
+
+        function resetState() {
+            document.getElementById("submitTime").disabled = false;
+            document.getElementById("setDuration").disabled = false;
+
+            document.getElementById("startTimeSpan").textContent = ""; 
+            document.getElementById("finishTimeSpan").textContent = ""; 
+            document.getElementById("timeWarning1Span").textContent = "";
+            document.getElementById("timeWarning2Span").textContent = "";
+            document.getElementById("timeWarning3Span").textContent = "";
+            document.getElementById("timeWarning4Span").textContent = "";
+
+            document.getElementById("durationHours").value = "1";
+            document.getElementById("durationMinutes").value = "0";
+
+            durationHours = 1;
+            durationMinutes = 0;
+
+            updateTestDurationLabel();
+        }
+
+        function setDuration() {
+            const hoursInput = parseInt(document.getElementById("durationHours").value) || 0;
+            const minutesInput = parseInt(document.getElementById("durationMinutes").value) || 0;
+
+            durationHours = hoursInput;
+            durationMinutes = minutesInput;
+
+            updateTestDurationLabel();
+            document.getElementById("setDuration").disabled = true;
+        }
+
+        document.getElementById("setDuration").addEventListener("click", setDuration);
+        document.getElementById("submitTime").addEventListener("click", calculateTimes);
+        document.getElementById("resetTime").addEventListener("click", resetState);
+
+        setInterval(updateCurrentTime, 1000);
+        updateCurrentTime();
+    </script>
+</body>
+</html>
